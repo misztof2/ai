@@ -1,0 +1,33 @@
+##
+# Base configuration for the Neuro Data Engine
+#
+# This YAML file specifies default parameters used throughout the
+# pipeline.  Individual experiment types (e.g. calcium imaging) can
+# extend and override these values by providing their own YAML files
+# that reference this base configuration.  Values defined here are
+# sensible defaults for most electrophysiology and imaging datasets.
+
+dataset:
+  # Sampling rate of the recording in Hertz
+  sampling_rate: 30.0
+  # List of channel indices to load; empty list means all channels
+  channels: []
+  # Optional names corresponding to channels
+  channel_names: []
+
+preprocess:
+  # Window length (in samples) for baseline correction
+  baseline_window: 100
+  # Normalisation method to apply; options: zscore, minmax, none
+  normalization_method: zscore
+  filter:
+    # Type of digital filter to apply: lowpass or highpass
+    type: lowpass
+    # Cutoff frequency in Hertz
+    cutoff: 3.0
+    # Filter order (integer)
+    order: 2
+
+analysis:
+  # Threshold (in arbitrary units) above baseline for spike detection
+  spike_threshold: 2.0

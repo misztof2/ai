@@ -1,0 +1,23 @@
+##
+# Calcium imaging-specific configuration
+#
+# This file inherits default values from the base configuration and
+# overrides parameters that are commonly different for calcium imaging
+# experiments.  You can create additional experiment-specific
+# configurations in sibling files/directories.
+
+extends: base
+
+dataset:
+  # Calcium imaging recordings often have lower sampling rates
+  sampling_rate: 10.0
+
+preprocess:
+  baseline_window: 50
+  filter:
+    type: lowpass
+    cutoff: 2.0
+    order: 3
+
+analysis:
+  spike_threshold: 1.5
